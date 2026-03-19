@@ -25,33 +25,43 @@ const projects = [
   },
   {
     number: "03",
+    title: "Contact Workspace Integration for LibreChat",
+    description:
+      "Extended LibreChat with a full-stack Contacts workspace — users can store, search, and import contacts in bulk via CSV, then query them through natural language chat. The AI assistant automatically retrieves relevant contacts and injects them into the prompt context before each message.",
+      tags: ["Nginx", "Open-Source", "Express", "MongoDB", "React"],
+      live: "https://librechat.fouzan.dev",
+      github: "https://github.com/malikfouzankhan/LibreChat-contact-integration",
+      accent:"#FF6B6B",
+  },
+  {
+    number: "04",
     title: "Pokémon Data Explorer (PokeAPI)",
     description:
       "A frontend web app that fetches Pokémon data from PokeAPI, allowing users to view, edit Pokémon stats, and upload or download CSV files to manage the data.",
     tags: ["PokeAPI", "TypeScript", "Next.js"],
     live: "https://pokelab.fouzan.dev",
     github: "https://github.com/malikfouzankhan/pokelab-nextjs",
-    accent: "#FF6B6B",
+    accent: "#B47FFF",
   },
   {
-    number: "04",
+    number: "05",
     title: "Subscription Maintainer",
     description:
       "A single platform to maintain all your subscriptions and get reminders. No more searching around, one click to access all your subscriptions.",
     tags: ["BullMQ", "Node.js", "Express", "TypeScript", "MongoDB"],
     live: "#",
     github: "https://github.com/malikfouzankhan/subscription-maintainer",
-    accent: "#B47FFF",
+    accent: "#FF3CAC",
   },
   {
-    number: "05",
+    number: "06",
     title: "Upvote your Idea",
     description:
       "List your idea and let people validate it through upvoting and feedback. Community driven and startup friendly.",
     tags: ["Express", "MongoDB", "React"],
     live: "#",
     github: "https://github.com/malikfouzankhan/upvote-your-idea",
-    accent: "#FF3CAC",
+    accent: "#A8FF78",
   },
 ];
 
