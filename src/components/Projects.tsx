@@ -15,16 +15,6 @@ const projects = [
   },
   {
     number: "02",
-    title: "Business Management Platform – Adfai Tech",
-    description:
-      "Contributed to the development of a web-based platform for Adfai Tech, implementing frontend components and integrating backend APIs to support business operations.",
-    tags: ["React", "Node.js", "Cloudinary", "MongoDB"],
-    live: "https://adfaitech.com",
-    github: "https://github.com/adfai-tech/adfai-tech-website",
-    accent: "#47FFD4",
-  },
-  {
-    number: "03",
     title: "Contact Workspace Integration for LibreChat",
     description:
       "Extended LibreChat with a full-stack Contacts workspace — users can store, search, and import contacts in bulk via CSV, then query them through natural language chat. The AI assistant automatically retrieves relevant contacts and injects them into the prompt context before each message.",
@@ -34,7 +24,27 @@ const projects = [
       accent:"#FF6B6B",
   },
   {
+    number: "03",
+    title: "YBA Consulting — Loans & Financial Services Web Platform",
+    description:
+      "Full-stack consulting website for a Hyderabad-based financial firm built with Next.js 15, TypeScript, Supabase, and Tailwind CSS. Features a custom admin panel, secure authentication, and automated inquiry management.",
+      tags: ["Nginx", "Resend", "Express", "Postgres", "Next.js"],
+      live: "https://ca-v1.fouzan.dev",
+      github: "https://github.com/malikfouzankhan/yba-consulting",
+      accent:"#FF3CAC",
+  },
+  {
     number: "04",
+    title: "Business Management Platform – Adfai Tech",
+    description:
+      "Contributed to the development of a web-based platform for Adfai Tech, implementing frontend components and integrating backend APIs to support business operations.",
+    tags: ["React", "Node.js", "Cloudinary", "MongoDB"],
+    live: "https://adfaitech.com",
+    github: "https://github.com/adfai-tech/adfai-tech-website",
+    accent: "#47FFD4",
+  },
+  {
+    number: "05",
     title: "Pokémon Data Explorer (PokeAPI)",
     description:
       "A frontend web app that fetches Pokémon data from PokeAPI, allowing users to view, edit Pokémon stats, and upload or download CSV files to manage the data.",
@@ -43,16 +53,16 @@ const projects = [
     github: "https://github.com/malikfouzankhan/pokelab-nextjs",
     accent: "#B47FFF",
   },
-  {
-    number: "05",
-    title: "Subscription Maintainer",
-    description:
-      "A single platform to maintain all your subscriptions and get reminders. No more searching around, one click to access all your subscriptions.",
-    tags: ["BullMQ", "Node.js", "Express", "TypeScript", "MongoDB"],
-    live: "#",
-    github: "https://github.com/malikfouzankhan/subscription-maintainer",
-    accent: "#FF3CAC",
-  },
+  // {
+  //   number: "06",
+  //   title: "Subscription Maintainer",
+  //   description:
+  //     "A single platform to maintain all your subscriptions and get reminders. No more searching around, one click to access all your subscriptions.",
+  //   tags: ["BullMQ", "Node.js", "Express", "TypeScript", "MongoDB"],
+  //   live: "#",
+  //   github: "https://github.com/malikfouzankhan/subscription-maintainer",
+  //   accent: "#FF3CAC",
+  // },
   {
     number: "06",
     title: "Upvote your Idea",
