@@ -29,7 +29,7 @@ const projects = [
     description:
       "Full-stack consulting website for a Hyderabad-based financial firm built with Next.js 15, TypeScript, Supabase, and Tailwind CSS. Features a custom admin panel, secure authentication, and automated inquiry management.",
       tags: ["Nginx", "Resend", "Express", "Postgres", "Next.js"],
-      live: "https://ca-v1.fouzan.dev",
+      live: "https://ybaconsulting.in/",
       github: "https://github.com/malikfouzankhan/yba-consulting",
       accent:"#FF3CAC",
   },
