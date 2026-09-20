@@ -13,6 +13,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { Github, Linkedin, Twitter } from "@/components/ui/BrandIcons";
+import { announceAnchorScroll } from "@/lib/anchor-scroll";
 import { profile } from "@/data/profile";
 import { activeProjects, projects } from "@/data/projects";
 import { stack } from "@/data/stack";
@@ -53,7 +54,13 @@ export default function CommandPalette({ hasResume = false }: { hasResume?: bool
       // Let the dialog finish closing before scrolling, or the scroll gets
       // swallowed by the top-layer teardown.
       requestAnimationFrame(() => {
-        document.querySelector(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const target = document.querySelector(hash);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Same announcement AnchorScroll makes, for the same reason: without
+        // it, jumping across the page from here strobes the nav highlight
+        // through every section in between.
+        announceAnchorScroll(target.id);
       });
     },
     [close],

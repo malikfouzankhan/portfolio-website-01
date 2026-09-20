@@ -24,29 +24,52 @@ export default function ProjectRow({ project }: { project: Project }) {
       name="work"
       className="group border border-line bg-surface transition-colors open:bg-surface-hi"
     >
-      <summary className="flex flex-wrap items-center gap-x-5 gap-y-3 p-5 md:p-6">
+      {/* Grid below md, flex from md up.
+
+          Flex was the whole problem on a phone. The title wrapper is
+          `flex-1 min-w-0`, so its hypothetical width is 0 and it never forces
+          a line break, while the chip's is its full ~215px of max-content.
+          Both therefore fit on line one, the wrapper is squeezed to ~25px, and
+          `min-w-0` removes the min-content floor that would otherwise stop
+          long words spilling out of it — which is how "TECHNOLOGIES" ended up
+          painted underneath the chip.
+
+          An explicit grid takes the decision away from the flex algorithm:
+          the number gets an `auto` column, everything else gets the rest, and
+          the chip is placed on its own row where its width cannot compete. */}
+      <summary className="grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-2.5 p-5 md:flex md:flex-wrap md:items-center md:gap-x-5 md:gap-y-3 md:p-6">
         <span
           aria-hidden
-          className="font-display text-3xl leading-none text-accent-ink/40 transition-colors group-open:text-accent-ink/80"
+          className="shrink-0 font-display text-3xl leading-none text-accent-ink/40 transition-colors group-open:text-accent-ink/80"
         >
           {project.number}
         </span>
 
-        <span className="min-w-0 flex-1">
+        <span className="min-w-0 md:flex-1">
           <h3 className="font-display text-[1.45rem] leading-tight tracking-[0.02em] text-text transition-colors group-open:text-accent-ink md:text-[1.7rem]">
             {project.title}
           </h3>
-          <span className="mt-1 block font-mono text-[0.62rem] tracking-[0.12em] text-text-muted uppercase">
+          {/* Role and org always; team size and period only once there is room
+              for them. Both are repeated inside the open panel, so nothing is
+              actually lost on a phone. `break-words` is a backstop — if this
+              box is ever squeezed again, a long token wraps instead of
+              escaping. */}
+          <span className="mt-1 block font-mono text-[0.6rem] tracking-[0.1em] wrap-break-word text-text-muted uppercase sm:text-[0.62rem] sm:tracking-[0.12em]">
             {project.role}
-            {project.teamSize && ` · ${project.teamSize}`}
             {project.org && ` · ${project.org}`}
-            {project.period && ` · ${project.period}`}
+            <span className="hidden sm:inline">
+              {project.teamSize && ` · ${project.teamSize}`}
+              {project.period && ` · ${project.period}`}
+            </span>
           </span>
         </span>
 
-        <StatusChip status={project.status} note={project.statusNote} />
+        {/* Row 2, second column — under the title rather than beside it. */}
+        <span className="col-start-2 justify-self-start md:col-auto">
+          <StatusChip status={project.status} note={project.statusNote} />
+        </span>
 
-        <span className="flex items-center gap-1.5 font-mono text-[0.6rem] tracking-[0.12em] text-text-muted uppercase">
+        <span className="col-span-2 flex items-center gap-1.5 font-mono text-[0.6rem] tracking-[0.12em] text-text-muted uppercase md:col-auto">
           <span className="group-open:hidden">Click to see more</span>
           <span className="hidden group-open:inline">Collapse</span>
           <ChevronDown

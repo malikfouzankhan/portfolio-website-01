@@ -9,6 +9,12 @@ import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import { hasResume } from "@/lib/assets";
 
+/* Pinned here rather than inherited from the fetch. The live GitHub data now
+   arrives over GraphQL, which is a POST, and Next's data cache only covers
+   GET — without this the route would fall out of static prerendering and go
+   dynamic. Matches REVALIDATE_S in lib/github.ts. */
+export const revalidate = 900;
+
 // Server component. Only Nav, CommandPalette and the small interactive bits
 // inside sections ship as client JS.
 export default function Home() {

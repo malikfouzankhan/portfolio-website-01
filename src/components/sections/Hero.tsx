@@ -2,7 +2,8 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Github, Linkedin, Twitter } from "@/components/ui/BrandIcons";
 import { profile } from "@/data/profile";
 import { activeProjects } from "@/data/projects";
-import { getGithubActivity, relativeTime } from "@/lib/github";
+import { getGithubData, relativeTime } from "@/lib/github";
+import ContributionGraph from "@/components/ui/ContributionGraph";
 import Typewriter from "@/components/ui/Typewriter";
 
 const ICONS = { GitHub: Github, LinkedIn: Linkedin, Twitter: Twitter } as const;
@@ -21,13 +22,15 @@ function Chars({ text, offset = 0, className = "" }: { text: string; offset?: nu
 }
 
 export default async function Hero() {
-  const { lastPushed } = await getGithubActivity();
+  const { lastPushed, contributions } = await getGithubData();
   const liveCount = activeProjects.filter(
     (p) => p.status === "live" || p.status === "private",
   ).length;
 
   const statusRows = [
-    { k: "Status", v: profile.availabilityNote },
+    // Not "Status": the panel header already says that, and what this row
+    // actually reports is availability.
+    { k: "Availability", v: profile.availabilityNote },
     { k: "Focus", v: "Backend · WhatsApp Platform" },
     { k: "Based", v: `${profile.location} · ${profile.timezone}` },
     ...(lastPushed ? [{ k: "Last push", v: relativeTime(lastPushed) }] : []),
@@ -121,14 +124,30 @@ export default async function Hero() {
               </dd>
             </div>
           </dl>
+
+          {/* Half the year, because 53 columns across a phone reduces each day
+              to a ~5px smudge. Tooltips off: there is no hover to trigger them
+              on touch, and they are most of the markup's weight. */}
+          {contributions && (
+            <div className="mt-3 border border-line px-4 py-3.5 lg:hidden">
+              <div className="mb-2.5 font-mono text-[0.55rem] tracking-[0.12em] text-text-muted uppercase">
+                Contributions — last 6 months
+              </div>
+              <ContributionGraph data={contributions} weeks={26} showTooltips={false} />
+            </div>
+          )}
         </div>
 
         {/* Right — live system status, filling what used to be empty space */}
         <aside className="animate-fade hidden border border-line bg-surface/60 backdrop-blur-sm lg:block">
           <div className="flex items-center gap-2 border-b border-line px-5 py-3">
+            {/* Traffic lights. Two grey dots and one green read as a panel
+                someone forgot to finish; all three lit reads as deliberate
+                window chrome. Every tone is a token, so the light theme gets
+                its own burgundy/amber/forest set for free. */}
             <span className="flex gap-1.5" aria-hidden>
-              <span className="size-2 rounded-full bg-line-soft" />
-              <span className="size-2 rounded-full bg-line-soft" />
+              <span className="size-2 rounded-full bg-status-review/70" />
+              <span className="size-2 rounded-full bg-accent/70" />
               <span className="size-2 rounded-full bg-status-live/70" />
             </span>
             <span className="ml-1 font-mono text-[0.62rem] tracking-[0.14em] text-text-muted uppercase">
@@ -161,6 +180,24 @@ export default async function Hero() {
               </div>
             </div>
           </div>
+
+          {/* Absent rather than empty when there is no token — see
+              getGithubData. Nested here so it inherits the aside's
+              `hidden lg:block` and its `animate-fade`, which globals.css
+              already pauses behind the preloader. */}
+          {contributions && (
+            <div className="border-t border-line px-5 py-4">
+              <div className="mb-3 flex items-baseline justify-between gap-4">
+                <span className="font-mono text-[0.58rem] tracking-[0.12em] text-text-muted uppercase">
+                  contributions
+                </span>
+                <span className="font-mono text-[0.62rem] text-text-dim">
+                  {contributions.total} in the last year
+                </span>
+              </div>
+              <ContributionGraph data={contributions} />
+            </div>
+          )}
         </aside>
       </div>
 

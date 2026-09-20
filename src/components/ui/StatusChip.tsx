@@ -23,9 +23,12 @@ export default function StatusChip({
 }) {
   const { icon: Icon, label, tone } = CONFIG[status];
 
+  /* `shrink-0` and `whitespace-nowrap` so the chip can never be the thing that
+     breaks a layout: it keeps its size and forces the container to deal with
+     it, rather than collapsing into two ragged lines. */
   return (
     <span
-      className="inline-flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[0.62rem] tracking-[0.1em] uppercase"
+      className="inline-flex shrink-0 items-center gap-1.5 border px-2.5 py-1 font-mono text-[0.62rem] tracking-[0.1em] whitespace-nowrap uppercase"
       style={{
         color: tone,
         borderColor: `color-mix(in srgb, ${tone} 30%, transparent)`,
@@ -33,7 +36,18 @@ export default function StatusChip({
       }}
     >
       <Icon size={11} strokeWidth={2} aria-hidden />
-      {note ?? label}
+      {/* The long form of `note` ("Private — client system") is ~215px wide,
+          which is most of a phone's usable row. Swap in the one-word label
+          below md and let the note return when there is room. Done in CSS
+          rather than JS so the server renders one tree. */}
+      {note ? (
+        <>
+          <span className="md:hidden">{label}</span>
+          <span className="hidden md:inline">{note}</span>
+        </>
+      ) : (
+        label
+      )}
     </span>
   );
 }

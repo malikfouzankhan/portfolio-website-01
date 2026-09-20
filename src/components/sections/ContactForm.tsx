@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import Script from "next/script";
 import { ArrowUpRight, Check, CornerDownLeft, Loader2, X } from "lucide-react";
 import { sendMessage } from "@/app/actions/contact";
@@ -333,6 +334,19 @@ export default function ContactForm({ siteKey }: { siteKey?: string }) {
             <CornerDownLeft size={11} /> ⌘↵ to send · payload {bytes} B
           </span>
         </div>
+
+        {/* At the point of collection, which is where a privacy notice has to
+            be reachable from — a footer link alone doesn't satisfy that.
+            Deliberately not a consent tick-box: the basis here is legitimate
+            interest, not consent, and a checkbox would misrepresent it. */}
+        <p className="mt-4 font-mono text-[0.62rem] leading-relaxed text-text-muted">
+          This goes straight to my inbox — nothing is stored on the site and
+          nothing is tracked. See the{" "}
+          <Link href="/privacy" className="text-text-dim underline underline-offset-2 hover:text-accent-ink focus-visible:text-accent-ink">
+            privacy notice
+          </Link>
+          .
+        </p>
 
         {/* Status for assistive tech — the diagram is decorative. */}
         <p aria-live="polite" className="sr-only">

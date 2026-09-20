@@ -26,12 +26,19 @@ export default function ProjectCard({
         {project.number}
       </span>
 
-      <div>
-        <p className="font-mono text-[0.62rem] tracking-[0.15em] text-text-muted uppercase">
+      {/* `pr-14` reserves the corner the number watermark above occupies. It
+          is absolutely positioned, so nothing else keeps text out from under
+          it — a long role string would otherwise run straight through it. */}
+      <div className="pr-14">
+        <p className="font-mono text-[0.62rem] tracking-[0.12em] wrap-break-word text-text-muted uppercase sm:tracking-[0.15em]">
           {project.role}
-          {project.teamSize && ` · ${project.teamSize}`}
           {project.org && ` · ${project.org}`}
-          {project.period && ` · ${project.period}`}
+          {/* Matches ProjectRow: the secondary half of the line waits until
+              there is width for it. */}
+          <span className="hidden sm:inline">
+            {project.teamSize && ` · ${project.teamSize}`}
+            {project.period && ` · ${project.period}`}
+          </span>
         </p>
         <h3 className="mt-1.5 font-display text-[1.7rem] tracking-[0.02em] text-text">
           {project.title}

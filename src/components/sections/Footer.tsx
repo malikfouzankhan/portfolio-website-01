@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
 
@@ -52,10 +53,20 @@ export default function Footer() {
           <p className="font-mono text-[0.62rem] tracking-[0.08em] text-text-muted">
             © {new Date().getFullYear()} {profile.name} — BUILT WITH NEXT.JS
           </p>
-          <p className="font-mono text-[0.62rem] tracking-[0.08em] text-text-muted">
-            Press <kbd className="border border-line-soft px-1.5 py-0.5 text-text-dim">⌘K</kbd> to
-            navigate
-          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {/* Next's Link, not a bare anchor: this is a route change, and
+                AnchorScroll only intercepts same-page fragments. */}
+            <Link
+              href="/privacy"
+              className="font-mono text-[0.62rem] tracking-[0.08em] text-text-muted underline-offset-2 transition-colors hover:text-accent-ink focus-visible:text-accent-ink"
+            >
+              Privacy
+            </Link>
+            <p className="font-mono text-[0.62rem] tracking-[0.08em] text-text-muted">
+              Press <kbd className="border border-line-soft px-1.5 py-0.5 text-text-dim">⌘K</kbd>{" "}
+              to navigate
+            </p>
+          </div>
         </div>
       </div>
     </footer>

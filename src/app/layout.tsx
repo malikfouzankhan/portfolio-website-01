@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, DM_Mono, DM_Sans } from "next/font/google";
+import AnchorScroll from "@/components/AnchorScroll";
 import Preloader from "@/components/Preloader";
 import { profile } from "@/data/profile";
 import { SITE_URL } from "@/lib/site";
@@ -111,7 +112,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               for the mark to fly to.
             - No hash. A deep link means the visitor wants the content, and
               the restored scroll would put the nav in its morphed state
-              mid-measurement anyway.
+              mid-measurement anyway. In-site section links never write a
+              fragment (see AnchorScroll), so a hash here really does mean
+              somebody arrived from outside pointing at a section.
             - Not reduced motion — declined at the source rather than left to
               the stylesheet, which can only clamp durations, not a pause.
 
@@ -119,6 +122,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             every reload. Client-side navigation (/archive and back) never
             re-runs this script, so in-app moves stay uncovered for free —
             which is exactly the distinction asked for.
+
+            Scroll restoration is switched off for the same load, and only
+            for it. Browsers restore the previous offset on reload whatever
+            the URL says, so without this the cover would lift on whatever
+            section the visitor happened to be reading — the mark's flight
+            would end over mid-page copy instead of the hero it was composed
+            against. Preloader.tsx hands it back to "auto" the moment the
+            sequence ends, so back/forward and /archive keep normal
+            restoration.
 
             The watchdog is the important part: this script runs INDEPENDENTLY
             of the app bundle, so if that bundle never executes (chunk 404,
@@ -129,7 +141,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var r=document.documentElement;if(location.pathname==='/'&&!location.hash&&!matchMedia('(prefers-reduced-motion: reduce)').matches){r.dataset.preloading='hold';window.__mfkPreloadGuard=setTimeout(function(){r.removeAttribute('data-preloading')},5000)}}catch(e){document.documentElement.removeAttribute('data-preloading')}",
+              "try{var r=document.documentElement;if(location.pathname==='/'&&!location.hash&&!matchMedia('(prefers-reduced-motion: reduce)').matches){r.dataset.preloading='hold';history.scrollRestoration='manual';window.__mfkPreloadGuard=setTimeout(function(){r.removeAttribute('data-preloading');history.scrollRestoration='auto'},5000)}}catch(e){document.documentElement.removeAttribute('data-preloading')}",
           }}
         />
       </head>
@@ -145,6 +157,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             never renders two different trees and there is nothing to
             mismatch on hydration. */}
         <Preloader />
+        {/* Renders nothing; owns the document-level click delegation that
+            keeps section links out of the URL. */}
+        <AnchorScroll />
         {children}
         <script
           type="application/ld+json"

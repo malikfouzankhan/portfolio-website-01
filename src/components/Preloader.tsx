@@ -68,7 +68,18 @@ export default function Preloader() {
     // executing. It did execute, so take ownership of clearing the cover.
     clearTimeout(window.__mfkPreloadGuard);
 
-    const clear = () => root.removeAttribute("data-preloading");
+    const clear = () => {
+      root.removeAttribute("data-preloading");
+      // The pre-paint script took restoration off "auto" so this load would
+      // start at the hero rather than wherever the visitor last was. That
+      // was only ever meant to cover the cover; leaving it manual would
+      // silently break scroll restoration for back/forward afterwards.
+      try {
+        history.scrollRestoration = "auto";
+      } catch {
+        /* not supported — nothing was switched off in the first place */
+      }
+    };
 
     // Queried rather than held in refs, so a remount cannot leave this
     // sequence animating nodes that are no longer in the document.
