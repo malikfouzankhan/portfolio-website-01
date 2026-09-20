@@ -1,19 +1,34 @@
-"use client";
+import Nav from "@/components/nav/Nav";
+import CommandPalette from "@/components/CommandPalette";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
+import Work from "@/components/sections/Work";
+import Stack from "@/components/sections/Stack";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/sections/Footer";
+import { hasResume } from "@/lib/assets";
 
-import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-
+// Server component. Only Nav, CommandPalette and the small interactive bits
+// inside sections ship as client JS.
 export default function Home() {
   return (
-    <main className="bg-[#0A0A0A] min-h-screen text-white overflow-x-hidden">
+    <>
       <Nav />
-      <Hero />
-      <Projects />
-      <Skills />
-      <Footer />
-    </main>
+      <CommandPalette hasResume={hasResume()} />
+      <main id="main">
+        <Hero />
+        <About />
+        <Experience />
+        <Work />
+        <Stack />
+      </main>
+      {/* Contact grows to fill whatever the footer doesn't, so the two always
+          land together inside one viewport. */}
+      <div className="flex min-h-svh flex-col">
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 }

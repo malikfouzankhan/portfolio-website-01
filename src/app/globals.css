@@ -1,100 +1,534 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* AMBER / BURGUNDY duotone — dark is the default theme.
+     Themeable colours MUST live in plain `@theme`, never `@theme inline`:
+     inline bakes the literal value into each utility instead of a var()
+     reference, and the light-mode overrides below would silently stop working.
+
+     Contrast is deliberately capped. Light-on-dark haloes above ~13.5:1, so
+     dark text sits at 12.8:1 rather than the 16.6:1 this site used to ship. */
+  --color-bg: #1a0a0e;
+  --color-surface: #241016;
+  --color-surface-hi: #2d161d;
+  --color-line: #40232b;
+  --color-line-soft: #4a2b34;
+  --color-section: #150709;
+  --color-chip: #200e13;
+
+  --color-text: #dbd0d2;        /* 12.8:1 */
+  --color-text-dim: #b0a2a5;    /*  7.8:1 */
+  --color-text-muted: #94868a;  /*  5.5:1 */
+  --color-outline: #8f8286;     /*  5.2:1 — outlined display type */
+  --color-ghost: #3a2229;       /* decorative watermark */
+
+  /* accent = fills only (black on amber is 11.6:1, works in BOTH themes).
+     accent-ink = accent-coloured text and hairlines, which is what has to
+     change per theme — amber is 1.7:1 on parchment and unusable as ink. */
+  --color-accent: #f7b538;
+  --color-accent-ink: #f7b538;  /* 10.6:1 */
+  --color-focus: #f7b538;
+
+  --color-status-live: #5fd08a;
+  --color-status-review: #e0899e;
+  --color-status-neutral: #94868a;
+
+  --color-grid: rgba(255, 255, 255, 0.025);
+
+  /* Layout */
+  --container-page: 84rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Theme sweep. ThemeToggle reads both of these at runtime.
+     The clip is a circle, so screen coverage grows with the SQUARE of the
+     animated radius: a linear radius reads as a slow crawl that suddenly
+     dumps the last two thirds of the screen at the end. Ease-out-quad on the
+     radius is close to sqrt(t), which keeps the *area* revealed per frame
+     roughly constant — that is what actually reads as smooth. */
+  --theme-sweep: 700ms;
+  --ease-sweep: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* The icon is the gesture's cause, so it resolves before the sweep lands
+     rather than spinning for the whole duration. */
+  --theme-icon-morph: 380ms;
+  /* The nav morph is scroll-triggered, so it wants its own (shorter) timing
+     and a gentler curve — ease-out-expo is far too front-loaded here and
+     reads as a snap. */
+  --nav-morph: 600ms;
+  --ease-nav: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-blink: blink 1s step-end infinite;
+  --animate-rise: rise 0.7s var(--ease-out-expo) both;
+  --animate-fade: fade 0.6s ease both;
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Fonts are injected by next/font in layout.tsx; `inline` resolves the value
+   rather than nesting a var() reference. */
+@theme inline {
+  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+}
+
+/* Light — parchment. Not an inversion: the accent stays an amber fill and a
+   separate burgundy ink carries accent-coloured text. */
+:root[data-theme="light"] {
+  --color-bg: #fbf4e6;
+  --color-surface: #fffcf6;
+  --color-surface-hi: #f6eedc;
+  --color-line: #eadfc9;
+  --color-line-soft: #f0e7d5;
+  --color-section: #f4ebd8;
+  --color-chip: #fffdf8;
+
+  --color-text: #3b1b20;        /* 14.1:1 */
+  --color-text-dim: #6b3540;    /*  8.7:1 */
+  --color-text-muted: #854854;  /*  6.3:1 */
+  --color-outline: #8a6b72;     /*  4.3:1 */
+  --color-ghost: #ebdfcb;
+
+  --color-accent: #f7b538;      /* unchanged — fills */
+  --color-accent-ink: #90111f;  /*  8.4:1 */
+  --color-focus: #90111f;       /* amber would be near-invisible on parchment */
+
+  --color-status-live: #0f7a42;
+  --color-status-review: #9a3350;
+  --color-status-neutral: #854854;
+
+  --color-grid: rgba(0, 0, 0, 0.045);
+
+  color-scheme: light;
+}
 
 :root {
-  --accent: #E8FF47;
-  --accent-dim: #c8df20;
-  --bg: #0A0A0A;
-  --bg-card: #111111;
-  --bg-card-hover: #161616;
-  --border: #222222;
-  --text: #F0F0F0;
-  --text-muted: #666666;
-  --text-dim: #999999;
+  color-scheme: dark;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-::selection {
-  background: var(--accent);
-  color: #000;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-/* Utility */
-.font-display {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.02em;
-}
-.font-mono {
-  font-family: 'DM Mono', monospace;
-}
-
-/* Fade-in animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor targets so the fixed nav doesn't cover section headings. */
+    scroll-padding-top: 6rem;
   }
-  to {
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #000;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent-ink);
+    border-radius: 2px;
+  }
+  /* Firefox */
+  html {
+    scrollbar-color: var(--color-accent-ink) var(--color-bg);
+    scrollbar-width: thin;
+  }
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--color-outline);
+}
+
+@utility text-ghost {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--color-ghost);
+}
+
+/* Faint blueprint grid used behind the hero and the mobile menu. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Reveal-on-scroll.
+
+   The base state is VISIBLE on purpose. `Reveal` adds `data-reveal="pending"`
+   from an effect, so if JS never runs the content is still readable rather
+   than stranded at opacity 0. */
+@layer components {
+  [data-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  [data-reveal="shown"] {
     opacity: 1;
     transform: translateY(0);
+    transition:
+      opacity 0.6s ease var(--reveal-delay, 0s),
+      transform 0.6s var(--ease-out-expo) var(--reveal-delay, 0s);
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Disclosure rows. The default marker is replaced by our own chevron. */
+@layer base {
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
-@keyframes slideInLeft {
+/* Height animation for <details>. Gated behind @supports: where
+   interpolate-size isn't available the panel simply snaps open, which is a
+   perfectly good result — never a broken one. */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      interpolate-size: allow-keywords;
+    }
+
+    details[name="work"]::details-content {
+      block-size: 0;
+      overflow: clip;
+      /* Skips rendering the collapsed panel. `allow-discrete` defers the flip
+         until the height transition finishes, so the collapse stays visible.
+         Note this does NOT stop descendant animations on its own — the
+         explicit pause rule below is what handles that. */
+      content-visibility: hidden;
+      transition:
+        block-size 0.45s var(--ease-out-expo),
+        content-visibility 0.45s allow-discrete;
+    }
+
+    details[name="work"][open]::details-content {
+      block-size: auto;
+      content-visibility: visible;
+    }
+  }
+}
+
+/* content-visibility alone does not reliably halt descendant animations, so
+   pause the diagram packets explicitly whenever their row is closed. Without
+   this they keep running for the rest of the session once a row has been
+   opened — invisible, but real CPU. */
+details:not([open]) .arch-packet {
+  animation-play-state: paused;
+}
+
+/* Theme sweep. The default cross-fade is disabled so the expanding circle
+   clip (applied from ThemeToggle) is the only visible effect: the new theme is
+   revealed over the old one, spreading from the button. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* While a sweep runs, per-element colour transitions would animate underneath
+   the snapshot and fight it. Freeze them for the duration. */
+html[data-theme-switching] *,
+html[data-theme-switching] *::before,
+html[data-theme-switching] *::after {
+  transition: none !important;
+}
+
+/* The toggle icon gets its own snapshot pair so it morphs in view. Without a
+   view-transition-name it sits inside the root snapshot and any transition on
+   it is invisible. */
+.theme-icon {
+  view-transition-name: theme-icon;
+}
+
+::view-transition-old(theme-icon),
+::view-transition-new(theme-icon) {
+  animation-duration: var(--theme-icon-morph);
+  animation-timing-function: var(--ease-out-expo);
+  animation-fill-mode: both;
+  mix-blend-mode: normal;
+}
+::view-transition-old(theme-icon) {
+  animation-name: theme-icon-out;
+}
+::view-transition-new(theme-icon) {
+  animation-name: theme-icon-in;
+}
+
+/* Shorter throw than before: at this duration a 150deg spin reads as a
+   flick rather than a morph. */
+@keyframes theme-icon-out {
+  from { opacity: 1; transform: rotate(0deg) scale(1); }
+  to   { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+}
+@keyframes theme-icon-in {
+  from { opacity: 0; transform: rotate(90deg) scale(0.5); }
+  to   { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-icon { view-transition-name: none; }
+}
+
+/* Continuous scroll effects. Gated behind @supports because Firefox stable
+   still ships these behind a flag — absence must be harmless, so this only
+   ever carries decoration, never a content reveal. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-progress {
+      transform-origin: 0 50%;
+      animation: scroll-progress linear;
+      animation-timeline: scroll(root block);
+    }
+
+    @keyframes scroll-progress {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .parallax-slow {
+      animation: parallax-slow linear;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+
+    @keyframes parallax-slow {
+      from {
+        transform: translateY(-4%);
+      }
+      to {
+        transform: translateY(4%);
+      }
+    }
+  }
+}
+
+/* Per-character stagger for the hero wordmark. */
+.char {
+  display: inline-block;
+  animation: rise 0.8s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i) * 40ms + 150ms);
+}
+
+/* Preloader. Everything here is driven by `data-preloading` on <html>, which
+   a pre-paint script in layout.tsx sets (and only ever sets on a session's
+   first visit, never under reduced motion). No attribute, no preloader — so
+   with JS off the page is simply itself.
+
+   Two states: "hold" while the mark fades in, "exit" once it starts flying to
+   the nav. Splitting them is what lets the hero's entrance be released at the
+   start of the flight rather than at the end. */
+#preloader {
+  display: none;
+}
+
+html[data-preloading] #preloader {
+  position: fixed;
+  inset: 0;
+  /* Above the nav (200), below the skip link (300) so Tab still reaches it. */
+  z-index: 250;
+  display: grid;
+  place-items: center;
+}
+
+/* Once the ground is clearing the page looks live, so it must BE live — the
+   flight still has ~700ms to run and a full-screen box would eat every click
+   in the meantime. */
+html[data-preloading="exit"] #preloader {
+  pointer-events: none;
+}
+
+/* The ground is a separate layer from the mark: the mark has to stay fully
+   opaque while it flies, so the two cannot share an opacity. The grid lives
+   INSIDE the veil so one fade carries both away, revealing the hero's own
+   grid underneath at the same 60px pitch. */
+.preloader-veil {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+}
+
+/* The grid ignites outward from behind the mark, via a radial mask whose
+   size animates. Driven from CSS on the attribute rather than from JS, so it
+   begins at first paint — which is what fills the otherwise dead beat while
+   the font resolves and React hydrates.
+
+   `bg-grid` supplies the graticule itself; this only positions and reveals
+   it. Where masks are unsupported the grid simply appears un-ignited, which
+   is a fine degradation. */
+.preloader-grid {
+  position: absolute;
+  inset: 0;
+  /* `bg-grid` reads this token at the use site, so overriding it here
+     restyles the graticule without touching the hero's. The page-wide value
+     is 2.5% white — right as texture behind a full hero, invisible as the
+     only thing on an empty cover. Tinted with accent-ink so it ignites warm
+     and cools to the hero's neutral grid as the veil clears; accent-ink
+     rather than accent because it has to work on parchment too. */
+  --color-grid: color-mix(in srgb, var(--color-accent-ink) 26%, transparent);
+  mask-image: radial-gradient(circle, #000 45%, transparent 72%);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(circle, #000 45%, transparent 72%);
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+}
+
+html[data-preloading] .preloader-grid {
+  animation: preload-ignite 1600ms var(--ease-sweep) both;
+}
+
+@keyframes preload-ignite {
   from {
     opacity: 0;
-    transform: translateX(-40px);
+    mask-size: 0% 0%;
+    -webkit-mask-size: 0% 0%;
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    mask-size: 320% 320%;
+    -webkit-mask-size: 320% 320%;
   }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* The hero wordmark and status panel animate from first paint and cannot be
+   started late — `rise` is pure CSS with no JS entry point. Pausing holds each
+   char at its `from` state (invisible, thanks to fill-mode `both`) and
+   unpausing resumes the delay rather than restarting it, so releasing this at
+   the start of the flight makes the hero rise in as the cover clears.
+
+   Gated on no-preference because the reduced-motion block below clamps
+   animation DURATION, which does nothing to a paused animation — a stale
+   attribute would otherwise leave the hero stranded at opacity 0. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-preloading="hold"] .char,
+  html[data-preloading="hold"] .animate-fade {
+    animation-play-state: paused;
+  }
 }
 
-.animate-fade-up {
-  animation: fadeUp 0.7s ease forwards;
+/* `visibility`, not `display` — the real logo has to keep its box, because it
+   IS the measured destination for the flight. */
+html[data-preloading] [data-nav-logo] {
+  visibility: hidden;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease forwards;
+/* On <html>: Nav.tsx owns `body.style.overflow` for the mobile menu and
+   clears it on cleanup, so an inline style there would outrank this rule and
+   race us. Locking here sidesteps that entirely.
+
+   `hidden` rather than `clip` specifically so `scrollbar-gutter` applies —
+   it only affects scroll containers, and `clip` does not create one. Without
+   the reserved gutter the 4px scrollbar vanishes on lock and returns in the
+   very frame of the handoff, twitching the hero's centred content by 2px at
+   exactly the moment the landing is meant to look exact. */
+html[data-preloading] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+.preloader-mark {
+  /* Matches the nav anchor's tracking so the measured width ratio is a true
+     proportional scale and the glyphs land exactly on top of the real logo. */
+  position: relative; /* paints above the absolutely-positioned veil */
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 16vw, 8rem);
+  letter-spacing: 0.1em;
+  /* Must match the nav anchor's inherited line-height (1.5), not just its
+     tracking. The flight scales by the WIDTH ratio, so if the two line
+     boxes have different proportions the glyph sits at a different height
+     inside an otherwise correctly-placed box and visibly jumps at handoff. */
+  line-height: 1.5;
+  color: var(--color-accent-ink);
+  opacity: 0;
+  /* Static, and load-bearing: the flight's corner deltas are only exact with
+     a top-left origin. Kept here rather than inline in JSX so it doesn't look
+     like a stray style someone can tidy away. */
+  transform-origin: top left;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Belt and braces. The pre-paint script already declines to arm the
+     preloader under reduced motion, so this only ever catches a stale
+     attribute — but the cost of that is a permanently covered page. */
+  #preloader {
+    display: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal="pending"],
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+  }
 }

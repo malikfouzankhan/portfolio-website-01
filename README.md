@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Malik Fouzan Khan
 
-## Getting Started
+Personal site. Next.js 16 (App Router) + React 19 + Tailwind CSS v4, deployed as
+a static build with one hourly-revalidated fetch.
 
-First, run the development server:
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # production build
+pnpm start      # serve the production build
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How it's put together
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/          routes, metadata, OG image, sitemap, robots
+  components/
+    sections/   Hero · About · Experience · Work · Stack · Contact · Footer
+    ui/         shared primitives (Reveal, SectionHeader, diagrams, icons)
+    nav/        Nav + mobile menu
+  data/         all content — projects, experience, stack, profile
+  lib/          GitHub fetch, site constants
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Content lives in `src/data/`, not in components.** To add a project, edit
+[`src/data/projects.ts`](src/data/projects.ts); to change the bio or links, edit
+[`src/data/profile.ts`](src/data/profile.ts). Nothing is hardcoded in JSX.
 
-## Learn More
+A few decisions worth knowing about:
 
-To learn more about Next.js, take a look at the following resources:
+- **`page.tsx` is a server component.** Only `Nav`, `CommandPalette`,
+  `Typewriter`, `CopyEmail` and `Reveal` ship as client JS. Sections, project
+  cards and the architecture diagrams are server-rendered.
+- **Responsiveness is pure CSS.** No `isMobile` state, no resize listeners —
+  breakpoints are Tailwind `md:` variants, so the first paint is correct on
+  mobile.
+- **Reveal-on-scroll starts visible.** `Reveal` hides elements from an effect
+  and reveals them via one shared `IntersectionObserver`. If JS fails, content
+  is still readable.
+- **Scroll-driven CSS is progressive enhancement only.** `animation-timeline`
+  sits behind `@supports` and carries decoration (progress bar, parallax) —
+  never content — because Firefox stable still ships it behind a flag.
+- **Architecture diagrams are inline SVG** generated from the `architecture`
+  field on a project. No images, no diagram library.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Press <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> for the command palette. Type `>` in it
+for a terminal; `help` lists the commands.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Before deploying
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Set the real domain in [`src/lib/site.ts`](src/lib/site.ts)
+- [ ] Add `public/resume.pdf`
+- [ ] Fill in the `TODO` date ranges in [`src/data/experience.ts`](src/data/experience.ts)
+- [ ] Review `unverified` in [`src/data/stack.ts`](src/data/stack.ts) — fold each
+      entry into a group or delete it
