@@ -21,6 +21,8 @@ export default function ProjectRow({ project }: { project: Project }) {
 
   return (
     <details
+      // Anchor target for the hero's named systems; AnchorScroll opens it.
+      id={project.slug}
       name="work"
       className="group border border-line bg-surface transition-colors open:bg-surface-hi"
     >

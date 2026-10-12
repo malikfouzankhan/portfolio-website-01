@@ -1,0 +1,772 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T10:05:43+00:00",
+  "title": "Design System: Malik Fouzan Khan — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "sodium-amber": {
+        "role": "primary",
+        "displayName": "Sodium Amber",
+        "canonical": "#f7b538",
+        "tonalRamp": [
+          "#120900",
+          "#322203",
+          "#583c01",
+          "#805906",
+          "#a87819",
+          "#d49924",
+          "#febc41",
+          "#ffecce"
+        ]
+      },
+      "black": {
+        "role": "neutral",
+        "displayName": "On-Amber Black",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "oxblood-night": {
+        "role": "neutral",
+        "displayName": "Oxblood Night",
+        "canonical": "#1a0a0e",
+        "tonalRamp": [
+          "#15060a",
+          "#311f23",
+          "#503c40",
+          "#705b5f",
+          "#927c80",
+          "#b69ea3",
+          "#dbc2c7",
+          "#fee8ec"
+        ]
+      },
+      "oxblood-surface": {
+        "role": "neutral",
+        "displayName": "Oxblood Surface",
+        "canonical": "#241016",
+        "tonalRamp": [
+          "#17050a",
+          "#331e24",
+          "#523a41",
+          "#735960",
+          "#957a81",
+          "#b99ca3",
+          "#dec0c7",
+          "#fee8ed"
+        ]
+      },
+      "oxblood-surface-hi": {
+        "role": "neutral",
+        "displayName": "Oxblood Surface Hi",
+        "canonical": "#2d161d",
+        "tonalRamp": [
+          "#18040a",
+          "#351d24",
+          "#543941",
+          "#745860",
+          "#977981",
+          "#bb9ba3",
+          "#e0bfc8",
+          "#fee8ed"
+        ]
+      },
+      "oxblood-section": {
+        "role": "neutral",
+        "displayName": "Oxblood Section",
+        "canonical": "#150709",
+        "tonalRamp": [
+          "#140709",
+          "#302022",
+          "#4f3c3f",
+          "#6f5b5e",
+          "#917c7f",
+          "#b59fa1",
+          "#d9c3c5",
+          "#fee8eb"
+        ]
+      },
+      "oxblood-chip": {
+        "role": "neutral",
+        "displayName": "Oxblood Chip",
+        "canonical": "#200e13",
+        "tonalRamp": [
+          "#16060a",
+          "#321f24",
+          "#513b40",
+          "#715a5f",
+          "#947b80",
+          "#b79da3",
+          "#dcc1c7",
+          "#fee8ed"
+        ]
+      },
+      "oxblood-line": {
+        "role": "neutral",
+        "displayName": "Oxblood Line",
+        "canonical": "#40232b",
+        "tonalRamp": [
+          "#1a0309",
+          "#371b23",
+          "#573840",
+          "#78575f",
+          "#9b7780",
+          "#bf9aa2",
+          "#e4bdc6",
+          "#fee8ed"
+        ]
+      },
+      "oxblood-line-soft": {
+        "role": "neutral",
+        "displayName": "Oxblood Line Soft",
+        "canonical": "#4a2b34",
+        "tonalRamp": [
+          "#1a030a",
+          "#381b23",
+          "#573740",
+          "#79565f",
+          "#9b7780",
+          "#c099a3",
+          "#e5bdc7",
+          "#ffe8ed"
+        ]
+      },
+      "oxblood-ghost": {
+        "role": "neutral",
+        "displayName": "Oxblood Ghost",
+        "canonical": "#3a2229",
+        "tonalRamp": [
+          "#18040a",
+          "#341d24",
+          "#533a41",
+          "#745860",
+          "#977981",
+          "#bb9ca3",
+          "#e0bfc8",
+          "#fee8ed"
+        ]
+      },
+      "ash-text": {
+        "role": "neutral",
+        "displayName": "Ash Text",
+        "canonical": "#dbd0d2",
+        "tonalRamp": [
+          "#10090a",
+          "#2b2324",
+          "#483f41",
+          "#685e60",
+          "#897f81",
+          "#aca2a4",
+          "#d1c6c8",
+          "#f6ebed"
+        ]
+      },
+      "ash-dim": {
+        "role": "neutral",
+        "displayName": "Ash Dim",
+        "canonical": "#b0a2a5",
+        "tonalRamp": [
+          "#11080a",
+          "#2c2224",
+          "#4a3e41",
+          "#6a5d60",
+          "#8c7e81",
+          "#afa1a4",
+          "#d3c5c8",
+          "#f9eaed"
+        ]
+      },
+      "ash-muted": {
+        "role": "neutral",
+        "displayName": "Ash Muted",
+        "canonical": "#94868a",
+        "tonalRamp": [
+          "#11080b",
+          "#2d2225",
+          "#4a3e42",
+          "#6a5d61",
+          "#8c7e82",
+          "#afa1a5",
+          "#d4c5c9",
+          "#f9eaee"
+        ]
+      },
+      "ash-outline": {
+        "role": "neutral",
+        "displayName": "Ash Outline",
+        "canonical": "#8f8286",
+        "tonalRamp": [
+          "#11080b",
+          "#2c2225",
+          "#4a3e42",
+          "#6a5d61",
+          "#8b7e82",
+          "#aea1a5",
+          "#d3c5c9",
+          "#f9eaee"
+        ]
+      },
+      "signal-green": {
+        "role": "status",
+        "displayName": "Signal Green",
+        "canonical": "#5fd08a",
+        "tonalRamp": [
+          "#001005",
+          "#032e16",
+          "#005029",
+          "#05753f",
+          "#1c9b58",
+          "#4cbf7a",
+          "#74e49d",
+          "#c8fed8"
+        ]
+      },
+      "signal-rose": {
+        "role": "status",
+        "displayName": "Signal Rose",
+        "canonical": "#e0899e",
+        "tonalRamp": [
+          "#1e0008",
+          "#49041f",
+          "#6e233b",
+          "#934459",
+          "#b8657a",
+          "#de879c",
+          "#fdb0c2",
+          "#fee8ec"
+        ]
+      },
+      "ledger-parchment": {
+        "role": "neutral",
+        "displayName": "Ledger Parchment",
+        "canonical": "#fbf4e6",
+        "tonalRamp": [
+          "#0f0a03",
+          "#2a241a",
+          "#474136",
+          "#666155",
+          "#888275",
+          "#aba497",
+          "#cfc8bb",
+          "#f5eee0"
+        ]
+      },
+      "parchment-surface": {
+        "role": "neutral",
+        "displayName": "Parchment Surface",
+        "canonical": "#fffcf6",
+        "tonalRamp": [
+          "#0d0b07",
+          "#272520",
+          "#44423d",
+          "#63615c",
+          "#85827d",
+          "#a7a59f",
+          "#ccc9c3",
+          "#f1eee8"
+        ]
+      },
+      "parchment-surface-hi": {
+        "role": "neutral",
+        "displayName": "Parchment Surface Hi",
+        "canonical": "#f6eedc",
+        "tonalRamp": [
+          "#100a01",
+          "#2a2417",
+          "#484133",
+          "#676151",
+          "#898271",
+          "#aca493",
+          "#d0c8b7",
+          "#f6eedc"
+        ]
+      },
+      "parchment-section": {
+        "role": "neutral",
+        "displayName": "Parchment Section",
+        "canonical": "#f4ebd8",
+        "tonalRamp": [
+          "#100a01",
+          "#2b2416",
+          "#484132",
+          "#686050",
+          "#8a8170",
+          "#ada492",
+          "#d1c8b6",
+          "#f7eedb"
+        ]
+      },
+      "parchment-chip": {
+        "role": "neutral",
+        "displayName": "Parchment Chip",
+        "canonical": "#fffdf8",
+        "tonalRamp": [
+          "#0c0b08",
+          "#262521",
+          "#43423e",
+          "#63615d",
+          "#84827e",
+          "#a7a5a0",
+          "#cbc9c4",
+          "#f0eee9"
+        ]
+      },
+      "parchment-line": {
+        "role": "neutral",
+        "displayName": "Parchment Line",
+        "canonical": "#eadfc9",
+        "tonalRamp": [
+          "#110a00",
+          "#2c2413",
+          "#4a412f",
+          "#6a604d",
+          "#8b816d",
+          "#aea48f",
+          "#d3c8b2",
+          "#f8edd7"
+        ]
+      },
+      "parchment-line-soft": {
+        "role": "neutral",
+        "displayName": "Parchment Line Soft",
+        "canonical": "#f0e7d5",
+        "tonalRamp": [
+          "#100a01",
+          "#2b2416",
+          "#484132",
+          "#686051",
+          "#8a8171",
+          "#ada493",
+          "#d1c8b7",
+          "#f7eedb"
+        ]
+      },
+      "parchment-ghost": {
+        "role": "neutral",
+        "displayName": "Parchment Ghost",
+        "canonical": "#ebdfcb",
+        "tonalRamp": [
+          "#120a00",
+          "#2d2414",
+          "#4a4130",
+          "#6a604e",
+          "#8c816f",
+          "#afa391",
+          "#d3c8b4",
+          "#f9edd9"
+        ]
+      },
+      "ink-text": {
+        "role": "neutral",
+        "displayName": "Ink Text",
+        "canonical": "#3b1b20",
+        "tonalRamp": [
+          "#1c0206",
+          "#3a1a1f",
+          "#5a373b",
+          "#7b555a",
+          "#9e767b",
+          "#c2999d",
+          "#e8bcc1",
+          "#fee8ea"
+        ]
+      },
+      "ink-dim": {
+        "role": "neutral",
+        "displayName": "Ink Dim",
+        "canonical": "#6b3540",
+        "tonalRamp": [
+          "#1e0007",
+          "#42101e",
+          "#642f3a",
+          "#874e59",
+          "#ab6f79",
+          "#d0919b",
+          "#f6b5bf",
+          "#fee8eb"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#854854",
+        "tonalRamp": [
+          "#1e0007",
+          "#440d1d",
+          "#662d39",
+          "#894c58",
+          "#ae6d78",
+          "#d38f9b",
+          "#fab3be",
+          "#fee8eb"
+        ]
+      },
+      "ink-outline": {
+        "role": "neutral",
+        "displayName": "Ink Outline",
+        "canonical": "#8a6b72",
+        "tonalRamp": [
+          "#180409",
+          "#361c23",
+          "#553940",
+          "#76585f",
+          "#987980",
+          "#bc9ba2",
+          "#e1bfc6",
+          "#fee8ed"
+        ]
+      },
+      "burgundy-ink": {
+        "role": "primary",
+        "displayName": "Burgundy Ink",
+        "canonical": "#90111f",
+        "tonalRamp": [
+          "#1e0002",
+          "#4c010a",
+          "#7e0918",
+          "#a92e33",
+          "#d05453",
+          "#f97875",
+          "#feb3ae",
+          "#fee9e7"
+        ]
+      },
+      "forest-green": {
+        "role": "status",
+        "displayName": "Forest Green",
+        "canonical": "#0f7a42",
+        "tonalRamp": [
+          "#001004",
+          "#032e15",
+          "#0c4f2a",
+          "#02753d",
+          "#39985e",
+          "#5fbc7f",
+          "#84e1a2",
+          "#c8fed7"
+        ]
+      },
+      "wine-rose": {
+        "role": "status",
+        "displayName": "Wine Rose",
+        "canonical": "#9a3350",
+        "tonalRamp": [
+          "#1e0007",
+          "#49041d",
+          "#791035",
+          "#9f3754",
+          "#c55a74",
+          "#ed7d96",
+          "#fdb1bf",
+          "#fee8ec"
+        ]
+      },
+      "oxblood-line-control": {
+        "role": "neutral",
+        "displayName": "Oxblood Line Control",
+        "canonical": "#5a3540",
+        "tonalRamp": [
+          "#1c010a",
+          "#3a1823",
+          "#5a3540",
+          "#7c545f",
+          "#9f7580",
+          "#c397a3",
+          "#e9bbc7",
+          "#ffe8ed"
+        ]
+      },
+      "parchment-line-control": {
+        "role": "neutral",
+        "displayName": "Parchment Line Control",
+        "canonical": "#c9ae93",
+        "tonalRamp": [
+          "#140800",
+          "#352008",
+          "#533d25",
+          "#745c43",
+          "#977d63",
+          "#baa085",
+          "#dfc4a8",
+          "#feebd8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero wordmark only; per-character rise."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, two lines, solid over outline."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project and role names, confirmation headings."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Hero bio, max 34rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions and case-study prose."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "Uppercase section marker after a 60px accent rule."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase metadata, statuses, tags, field labels, chart text. 0.7rem floor."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Uppercase mono labels on every button and CTA."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-nav",
+        "value": "0 8px 30px -14px rgba(0,0,0,0.55)",
+        "purpose": "Scrolled nav pill only, with backdrop blur(40px) saturate(1.5)."
+      },
+      {
+        "name": "chip-glow",
+        "value": "0 0 14px -2px var(--color-accent-ink)",
+        "purpose": "Hover response on stack chips, with a 1px lift."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 8px 30px -14px rgba(0,0,0,0.55)",
+        "purpose": "Permitted soft lift on card / project-row hover, paired with the surface-hi tonal step."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entrances, reveals, accordion height, underline scale."
+      },
+      {
+        "name": "ease-nav",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Scroll-triggered nav morph (600ms)."
+      },
+      {
+        "name": "ease-sweep",
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "purpose": "Theme-toggle circular sweep (700ms) and preloader grid ignite."
+      },
+      {
+        "name": "nav-morph",
+        "value": "600ms",
+        "purpose": "Nav bar → pill and CTA radius."
+      },
+      {
+        "name": "theme-sweep",
+        "value": "700ms",
+        "purpose": "View-transition circle clip between themes."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 0.6s ease, transform 0.6s ease-out-expo (translateY 2rem)",
+        "purpose": "Scroll reveal; base state visible without JS."
+      },
+      {
+        "name": "rise",
+        "value": "0.7–0.8s ease-out-expo, 40ms per-char stagger",
+        "purpose": "Hero wordmark characters."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "md",
+        "value": "48rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      },
+      {
+        "name": "xl",
+        "value": "80rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid Sodium Amber slab for the main action; black mono label, lifts 2px.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">View my work <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--color-accent,#f7b538);color:#000;padding:14px 32px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--color-accent,#f7b538);border-radius:0;transition:transform 150ms ease;}.ds-btn-primary:hover,.ds-btn-primary:focus-visible{transform:translateY(-2px);}.ds-btn-primary:focus-visible{outline:2px solid var(--color-focus,#f7b538);outline-offset:3px;}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action; hairline border, ink shift on hover.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Get in touch <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--color-text-dim,#b0a2a5);border:1px solid var(--color-line-control,#5a3540);padding:14px 32px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:0;transition:color 150ms ease,border-color 150ms ease;}.ds-btn-outline:hover,.ds-btn-outline:focus-visible{color:var(--color-accent-ink,#f7b538);border-color:var(--color-accent-ink,#f7b538);}.ds-btn-outline:focus-visible{outline:2px solid var(--color-focus,#f7b538);outline-offset:3px;}"
+    },
+    {
+      "name": "Nav CTA",
+      "kind": "button",
+      "refersTo": "nav-cta",
+      "description": "Compact amber 'Hire me' that rounds into a pill with the scrolled nav.",
+      "html": "<a class=\"ds-nav-cta\" href=\"#\">Hire me</a>",
+      "css": ".ds-nav-cta{display:inline-block;background:var(--color-accent,#f7b538);color:#000;padding:8px 16px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2rem;transition:transform 150ms ease,filter 150ms ease;}.ds-nav-cta:hover,.ds-nav-cta:focus-visible{transform:translateY(-1px);filter:brightness(1.1);}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Recessed chip-well field with mono text; border shifts to accent ink on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field{display:block;max-width:320px;}.ds-field-label{display:block;margin-bottom:4px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-text-muted,#94868a);}.ds-input{width:100%;box-sizing:border-box;background:var(--color-chip,#200e13);color:var(--color-text,#dbd0d2);border:1px solid var(--color-line,#40232b);border-radius:0;padding:8px 12px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.82rem;transition:border-color 150ms ease;}.ds-input::placeholder{color:var(--color-text-muted,#94868a);}.ds-input:focus{outline:none;border-color:var(--color-accent-ink,#f7b538);}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-cta",
+      "description": "Scrolled state: frosted pill with MFK monogram, mono links, accent underline on the current section.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\">MFK<span>.</span></a><div class=\"ds-nav-links\"><a href=\"#\">about</a><a href=\"#\" aria-current=\"location\">work</a><a href=\"#\">stack</a><a class=\"ds-nav-hire\" href=\"#\">Hire me</a></div></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 24px;border:1px solid var(--color-line-soft,#4a2b34);border-radius:2rem;background:color-mix(in srgb,var(--color-bg,#1a0a0e) 45%,transparent);backdrop-filter:blur(40px) saturate(1.5);box-shadow:0 8px 30px -14px rgba(0,0,0,0.55);}.ds-nav-logo{font-family:var(--font-display, \"Bebas Neue\", \"Arial Narrow\", sans-serif);font-size:1.4rem;letter-spacing:0.1em;color:var(--color-accent-ink,#f7b538);text-decoration:none;}.ds-nav-logo span{color:var(--color-text-muted,#94868a);}.ds-nav-links{display:flex;align-items:center;gap:32px;}.ds-nav-links a:not(.ds-nav-hire){position:relative;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-dim,#b0a2a5);text-decoration:none;transition:color 150ms ease;}.ds-nav-links a:not(.ds-nav-hire)::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--color-accent-ink,#f7b538);transform:scaleX(0);transform-origin:left;transition:transform 300ms cubic-bezier(0.16,1,0.3,1);}.ds-nav-links a:not(.ds-nav-hire):hover,.ds-nav-links a[aria-current]{color:var(--color-accent-ink,#f7b538);}.ds-nav-links a[aria-current]::after{transform:scaleX(1);}.ds-nav-hire{background:var(--color-accent,#f7b538);color:#000;padding:8px 16px;border-radius:2rem;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;}"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Tone-tinted status marker: 30% border, 8% fill, full-tone mono label, never wraps.",
+      "html": "<span class=\"ds-status\"><svg width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4.9 19.1C1 15.2 1 8.8 4.9 4.9\"/><path d=\"M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/><path d=\"M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5\"/><path d=\"M19.1 4.9C23 8.8 23 15.1 19.1 19\"/></svg> Live</span>",
+      "css": ".ds-status{--tone:var(--color-status-live,#5fd08a);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:4px 10px;border:1px solid color-mix(in srgb,var(--tone) 30%,transparent);background:color-mix(in srgb,var(--tone) 8%,transparent);color:var(--tone);font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;}"
+    },
+    {
+      "name": "Stack Chip",
+      "kind": "chip",
+      "refersTo": "stack-chip",
+      "description": "Recessed tech chip that lifts and glows in accent ink on hover.",
+      "html": "<span class=\"ds-stack-chip\" tabindex=\"0\">BullMQ</span>",
+      "css": ".ds-stack-chip{display:inline-block;padding:4px 10px;background:var(--color-chip,#200e13);border:1px solid var(--color-line-soft,#4a2b34);color:var(--color-text-dim,#b0a2a5);font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.68rem;letter-spacing:0.05em;transition:color 200ms,border-color 200ms,background-color 200ms,box-shadow 200ms,transform 200ms;}.ds-stack-chip:hover,.ds-stack-chip:focus-visible{transform:translateY(-1px);border-color:color-mix(in srgb,var(--color-accent-ink,#f7b538) 45%,transparent);background:color-mix(in srgb,var(--color-accent-ink,#f7b538) 10%,transparent);color:var(--color-accent-ink,#f7b538);box-shadow:0 0 14px -2px var(--color-accent-ink,#f7b538);outline:none;}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Square surface panel with hairline border, watermark number, tonal step and permitted soft lift on hover.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-card-num\">04</span><h3 class=\"ds-card-title\">BookMyFarmhouse</h3><p class=\"ds-card-meta\">Backend Lead · Team of 3</p><p class=\"ds-card-body\">API surface, role-based auth, admin and vendor dashboards, and the deployment.</p><div class=\"ds-card-tags\"><span>Node.js</span><span>Nginx</span></div></article>",
+      "css": ".ds-card{position:relative;max-width:420px;padding:24px;background:var(--color-surface,#241016);border:1px solid var(--color-line,#40232b);border-radius:0;transition:background-color 200ms ease,box-shadow 200ms ease;}.ds-card:hover{background:var(--color-surface-hi,#2d161d);box-shadow:0 8px 30px -14px rgba(0,0,0,0.55);}.ds-card-num{position:absolute;top:20px;right:24px;font-family:var(--font-display, \"Bebas Neue\", \"Arial Narrow\", sans-serif);font-size:3rem;line-height:1;color:color-mix(in srgb,var(--color-accent-ink,#f7b538) 25%,transparent);}.ds-card-title{margin:0;font-family:var(--font-display, \"Bebas Neue\", \"Arial Narrow\", sans-serif);font-size:1.7rem;font-weight:400;letter-spacing:0.02em;color:var(--color-text,#dbd0d2);}.ds-card-meta{margin:6px 0 0;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-muted,#94868a);}.ds-card-body{margin:12px 0 0;font-family:var(--font-body, \"DM Sans\", system-ui, sans-serif);font-weight:300;font-size:0.92rem;line-height:1.75;color:var(--color-text-dim,#b0a2a5);}.ds-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}.ds-card-tags span{padding:4px 10px;border:1px solid color-mix(in srgb,var(--color-accent-ink,#f7b538) 25%,transparent);background:color-mix(in srgb,var(--color-accent-ink,#f7b538) 6%,transparent);color:var(--color-accent-ink,#f7b538);font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.08em;}"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Signature: accent rule, uppercase mono eyebrow, two-line Bebas headline solid over outline.",
+      "html": "<header class=\"ds-sh\"><div class=\"ds-sh-eyebrow\"><span></span>SELECTED WORK</div><h2 class=\"ds-sh-title\">PROJECTS<br><span>THAT SHIP.</span></h2></header>",
+      "css": ".ds-sh-eyebrow{display:flex;align-items:center;gap:24px;margin-bottom:16px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.2em;color:var(--color-accent-ink,#f7b538);}.ds-sh-eyebrow span{display:block;width:60px;height:1px;background:var(--color-accent-ink,#f7b538);}.ds-sh-title{margin:0;font-family:var(--font-display, \"Bebas Neue\", \"Arial Narrow\", sans-serif);font-weight:400;font-size:clamp(2.5rem,10vw,6rem);line-height:0.95;color:var(--color-text,#dbd0d2);}.ds-sh-title span{color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px var(--color-outline,#8f8286);}"
+    },
+    {
+      "name": "Status Panel",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Signature: window-chrome readout with lit traffic lights, mono key/value rows and display-type stats.",
+      "html": "<aside class=\"ds-panel\"><div class=\"ds-panel-bar\"><i></i><i></i><i></i><span>status</span></div><dl><div><dt>Availability</dt><dd>Full-time roles · selective freelance builds</dd></div><div><dt>Based</dt><dd>Hyderabad · IST</dd></div></dl><div class=\"ds-panel-stats\"><div><b>3</b><small>systems in production</small></div><div><b>80+</b><small>endpoints shipped</small></div></div></aside>",
+      "css": ".ds-panel{max-width:440px;border:1px solid var(--color-line,#40232b);background:color-mix(in srgb,var(--color-surface,#241016) 60%,transparent);backdrop-filter:blur(8px);}.ds-panel-bar{display:flex;align-items:center;gap:6px;padding:12px 20px;border-bottom:1px solid var(--color-line,#40232b);}.ds-panel-bar i{width:8px;height:8px;border-radius:9999px;opacity:0.7;}.ds-panel-bar i:nth-child(1){background:var(--color-status-review,#e0899e);}.ds-panel-bar i:nth-child(2){background:var(--color-accent,#f7b538);}.ds-panel-bar i:nth-child(3){background:var(--color-status-live,#5fd08a);}.ds-panel-bar span{margin-left:4px;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-text-muted,#94868a);}.ds-panel dl{margin:0;}.ds-panel dl div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 20px;border-bottom:1px solid var(--color-line,#40232b);}.ds-panel dt{flex-shrink:0;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-text-muted,#94868a);}.ds-panel dd{margin:0;text-align:right;font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.72rem;color:var(--color-text-dim,#b0a2a5);}.ds-panel-stats{display:grid;grid-template-columns:1fr 1fr;}.ds-panel-stats div{padding:16px 20px;}.ds-panel-stats div+div{border-left:1px solid var(--color-line,#40232b);}.ds-panel-stats b{display:block;font-family:var(--font-display, \"Bebas Neue\", \"Arial Narrow\", sans-serif);font-weight:400;font-size:1.875rem;color:var(--color-accent-ink,#f7b538);}.ds-panel-stats small{font-family:var(--font-mono, \"DM Mono\", ui-monospace, monospace);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-muted,#94868a);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night-Shift Console",
+    "overview": "This is an operations console after hours. The room is dark oxblood and the only light comes from sodium-amber indicators. Everything on the panel reports something real: a status readout with lit traffic lights, a count of the systems in production, a live contribution graph, and schematics with data packets moving between nodes. The console is the frame, but the voice is a poster. The name is set in condensed display type up to 9.5rem tall and fills the viewport, and each section title is a solid line stacked over an outlined one. Everything under that scale is small, tracked-out mono labelling. The contrast between the huge and the tiny is the style.\n\nThe mood is bold, editorial and poster-like. Scale and weight come only from the display face, and color comes from one amber. Everything else is quiet on purpose: light-weight body copy, hairline borders, flat tonal surfaces, and a faint 60px blueprint grid behind the hero. Components are tactile and confident. The primary action is a solid block of amber with black text that lifts slightly under the pointer, and chips glow on hover. The hardware is square: corners are hard and borders are one pixel.\n\nThere are two themes, and light is not an inversion of dark. Dark (Oxblood Night) is the default. Light (Ledger Parchment) keeps the amber fill and moves amber-colored text to a deep burgundy ink. Motion follows the same principles: every reveal starts visible, scroll-driven effects carry only decoration, and reduced motion turns all of it off.",
+    "keyCharacteristics": [
+      "Poster-scale Bebas Neue display against tiny tracked DM Mono labels, with almost nothing in between.",
+      "One accent, Sodium Amber, used as a fill. Amber-colored text uses a separate per-theme ink.",
+      "Square corners everywhere. The only curves are the floating nav pill and status dots.",
+      "Flat tonal surfaces separated by one-pixel hairlines, with a blueprint grid behind the hero.",
+      "Console instrumentation (status panels, schematics, pipeline diagrams, a ⌘K terminal) serves as honest decoration.",
+      "Dark by default, with a parchment light theme that is not an inversion of the dark one."
+    ],
+    "rules": [
+      {
+        "name": "The Two Ambers Rule",
+        "body": "The accent comes in two tokens: `accent` is a fill and `accent-ink` is text and hairlines. Amber measures 1.7:1 on parchment, so amber text is forbidden in the light theme. Any new accent-colored text must use `accent-ink`, never `accent`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Ceiling Rule",
+        "body": "In the dark theme, primary text stops at 12.8:1 on purpose. Light text on a dark ground halates above about 13.5:1, so never use pure white for text on oxblood.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tokens-Only Rule",
+        "body": "Every themeable color is a CSS custom property in plain `@theme`, never `@theme inline`, and is overridden under `:root[data-theme=\"light\"]`. A literal hex in a component breaks the light theme without any warning. The one exception is pure black text on amber, which is correct in both themes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Poster Voice Rule",
+        "body": "Size comes only from Bebas Neue. There are no bold, mid-sized sans headings. If something needs emphasis, it becomes display type or a tracked mono label, never 1.5rem DM Sans at weight 600.",
+        "section": "typography"
+      },
+      {
+        "name": "The Solid-Over-Outline Rule",
+        "body": "Section headlines pair a solid first line with an outlined second line (a one-pixel stroke with a transparent fill). The outline is the system's signature beat, so it belongs to headlines only and never to body or labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Legibility Floor Rule",
+        "body": "No UI text below 0.7rem (11.2px), including labels, captions, chart axes and legends. The \"tiny console label\" look comes from tracking and uppercase, never from size. Text inside an SVG viewBox scales with the drawing, so chart labels are HTML at a fixed size.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Edges Rule",
+        "body": "A line that divides space uses `line`. A line that outlines a control uses `line-control`, which holds about 1.9:1 in both themes. The plain hairline drops to 1.2:1 on parchment, where an outlined button loses its edge.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono-Means-Machine Rule",
+        "body": "DM Mono marks anything the machine would print: labels, statuses, counts, tags, timestamps, byte counts and buttons. Prose is never set in mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "Nothing casts a shadow at rest. Shadows and glows appear only as a response to state (hover, focus, scrolled) and never decorate a static surface.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use Sodium Amber (#f7b538) as a fill with pure black text, and route every accent-colored text or hairline through `accent-ink`.",
+      "**Do** keep every corner square (0), and round only the scrolled nav pill, its CTA, and indicator dots.",
+      "**Do** let Bebas Neue carry all scale. Section titles are two lines, solid over outlined.",
+      "**Do** label machine facts (statuses, counts, tags, metadata) in tracked uppercase DM Mono at 0.7rem or larger.",
+      "**Do** separate with one-pixel hairlines (Oxblood Line #40232b or Parchment Line #eadfc9) and tonal steps, not with boxes and shadows.",
+      "**Do** design both themes at once. A new token needs a light override under `:root[data-theme=\"light\"]`.",
+      "**Do** keep reveals visible by default, keep scroll-driven effects decorative, and honor `prefers-reduced-motion` by removing motion entirely.",
+      "**Do** use `--ease-out-expo` (cubic-bezier(0.16, 1, 0.3, 1)) for entrances and reveals, and `--ease-nav` for shape morphs."
+    ],
+    "donts": [
+      "**Don't** set amber (#f7b538) as text on Ledger Parchment. It measures 1.7:1.",
+      "**Don't** use pure white text on oxblood. Stay at or below Ash Text (#dbd0d2), the 12.8:1 ceiling.",
+      "**Don't** introduce rounded cards, rounded buttons or pill-shaped chips.",
+      "**Don't** add bold mid-sized sans headings. DM Sans stays at weight 300 or 400 for prose.",
+      "**Don't** cast shadows on surfaces at rest. Shadows and glows answer hover, focus or scroll only.",
+      "**Don't** add a second accent hue. Green and rose are status signals only, never decoration.",
+      "**Don't** hardcode hex values in components. The only exception is black text on amber.",
+      "**Don't** put the outline treatment on anything but headlines and ghost watermarks.",
+      "**Don't** set UI text below 0.7rem (11.2px), and don't let chart text scale down inside an SVG viewBox."
+    ]
+  }
+}

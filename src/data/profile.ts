@@ -1,19 +1,22 @@
 export const profile = {
   name: "Malik Fouzan Khan",
   initials: "MFK",
-  email: "malikfouzan05@gmail.com",
+  email: "khan.malikfouzan@gmail.com",
   location: "Hyderabad, India",
   timezone: "IST (UTC+5:30)",
   available: true,
-  availabilityNote: "Open to full-time roles",
+  // Hiring first, freelance second — the order is the priority.
+  availabilityNote: "Full-time roles · selective freelance builds",
 
-  // Shown in the hero typewriter. Kept concrete — these describe work that
-  // exists in the projects below, not aspirations.
+  // Shown in the hero typewriter, which cycles them once and settles on the
+  // first. Kept concrete — these describe work that exists in the projects
+  // below, not aspirations.
   roles: [
     "Full-Stack Engineer",
     "Backend & Systems",
     "WhatsApp Platform Integrations",
     "Production Deployments",
+    "AI Engineer"
   ],
 
   tagline: "I build backends that hold up in production.",
@@ -45,7 +48,7 @@ export const profile = {
     {
       label: "LinkedIn",
       short: "LI",
-      href: "https://www.linkedin.com/in/malik-fouzan-khan-a76183268/",
+      href: "https://www.linkedin.com/in/malikfouzankhan/",
     },
     { label: "Twitter", short: "TW", href: "https://x.com/_malik_fouzan_" },
   ],

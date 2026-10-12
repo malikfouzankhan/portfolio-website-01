@@ -28,7 +28,7 @@ export default function StatusChip({
      it, rather than collapsing into two ragged lines. */
   return (
     <span
-      className="inline-flex shrink-0 items-center gap-1.5 border px-2.5 py-1 font-mono text-[0.62rem] tracking-[0.1em] whitespace-nowrap uppercase"
+      className="inline-flex shrink-0 items-center gap-1.5 border px-2.5 py-1 font-mono text-[0.7rem] tracking-[0.08em] whitespace-nowrap uppercase"
       style={{
         color: tone,
         borderColor: `color-mix(in srgb, ${tone} 30%, transparent)`,

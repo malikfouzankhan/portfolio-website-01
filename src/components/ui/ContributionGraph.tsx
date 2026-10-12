@@ -7,13 +7,15 @@ import type { Contributions } from "@/lib/github";
 
    The viewBox is what makes one component serve a ~500px desktop panel and a
    ~350px phone strip: cells land near 7px in the panel and near 13px on the
-   phone (which asks for half as many weeks), with no breakpoint here. */
+   phone (which asks for half as many weeks), with no breakpoint here.
+
+   Text is the exception. Anything inside the viewBox scales with the grid,
+   which shrank the month labels to ~6px in the panel, so both text rows are
+   HTML at a fixed size, placed by percentage to stay over their columns. */
 
 const CELL = 10;
 const GAP = 3;
 const PITCH = CELL + GAP;
-/** Room above the grid for the month row. */
-const LABEL_H = 14;
 const ROWS = 7;
 
 /* `--color-accent-ink`, not `--color-accent`.
@@ -80,7 +82,7 @@ export default function ContributionGraph({
   if (!cols.length) return null;
 
   const width = cols.length * PITCH - GAP;
-  const height = LABEL_H + ROWS * PITCH - GAP;
+  const height = ROWS * PITCH - GAP;
 
   const days = cols.flat();
   // Summed from what is actually drawn, so the label stays honest when the
@@ -90,8 +92,13 @@ export default function ContributionGraph({
 
   /* One label per month, anchored to the column the month starts in. Column 0
      is skipped because it is nearly always a partial week whose label would
-     sit half off the left edge, and a label within two columns of the last one
-     is dropped rather than overlapping it. */
+     sit half off the left edge, and a label closer than `minGap` columns to the
+     last one is dropped rather than overlapping it.
+
+     A full year in the ~350px-wide panel leaves ~30px a month, which three
+     tracked capitals overrun, so it labels every other month; the half-year
+     phone strip has room for all of them. */
+  const minGap = cols.length > 30 ? 8 : 4;
   const months: { x: number; text: string }[] = [];
   let lastMonth = -1;
   let lastLabelCol = -Infinity;
@@ -99,7 +106,9 @@ export default function ContributionGraph({
     const month = utc(week[0].date).getUTCMonth();
     if (month !== lastMonth) {
       lastMonth = month;
-      if (i > 0 && i - lastLabelCol >= 3) {
+      // The tail guard keeps a month that starts in the last couple of
+      // columns from hanging off the right edge.
+      if (i > 0 && i - lastLabelCol >= minGap && i <= cols.length - 3) {
         months.push({ x: i * PITCH, text: MONTHS[month] });
         lastLabelCol = i;
       }
@@ -108,26 +117,23 @@ export default function ContributionGraph({
 
   return (
     <div className={className}>
+      <div
+        aria-hidden
+        className="relative mb-1.5 h-4 font-mono text-[0.7rem] leading-4 tracking-[0.08em] text-text-muted uppercase"
+      >
+        {months.map(({ x, text }) => (
+          <span key={text + x} className="absolute top-0" style={{ left: `${(x / width) * 100}%` }}>
+            {text}
+          </span>
+        ))}
+      </div>
+
       <svg
         viewBox={`0 0 ${width} ${height}`}
         role="img"
         aria-label={label}
         className="h-auto w-full"
       >
-        {months.map(({ x, text }) => (
-          <text
-            key={text + x}
-            x={x}
-            y={9}
-            className="font-mono"
-            fill="var(--color-text-muted)"
-            fontSize={8.5}
-            letterSpacing="0.08em"
-          >
-            {text.toUpperCase()}
-          </text>
-        ))}
-
         {cols.map((week, col) =>
           week.map((day) => (
             <rect
@@ -135,7 +141,7 @@ export default function ContributionGraph({
               x={col * PITCH}
               // Placed by real weekday rather than by array index, so the
               // partial first and last weeks line up with the rest.
-              y={LABEL_H + utc(day.date).getUTCDay() * PITCH}
+              y={utc(day.date).getUTCDay() * PITCH}
               width={CELL}
               height={CELL}
               rx={2}
@@ -151,11 +157,9 @@ export default function ContributionGraph({
         )}
       </svg>
 
-      {/* HTML rather than more SVG: inside the viewBox this would scale with
-          the grid and end up either unreadable or oversized. */}
       <div
         aria-hidden
-        className="mt-2.5 flex items-center justify-end gap-1.5 font-mono text-[0.55rem] tracking-[0.1em] text-text-muted uppercase"
+        className="mt-2.5 flex items-center justify-end gap-1.5 font-mono text-[0.7rem] tracking-[0.08em] text-text-muted uppercase"
       >
         Less
         {FILLS.map((fill, i) => (

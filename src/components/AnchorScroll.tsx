@@ -55,6 +55,10 @@ export default function AnchorScroll() {
       if (!target) return;
 
       e.preventDefault();
+      // A link to a disclosure row means "show me this one". Opened before
+      // the scroll so the exclusive accordion collapsing another row cannot
+      // move the target out from under it mid-flight.
+      if (target instanceof HTMLDetailsElement) target.open = true;
       // `scroll-padding-top` from globals.css applies to scrollIntoView the
       // same way it applies to a fragment jump, so the fixed nav still
       // clears the heading without a per-section offset.

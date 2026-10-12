@@ -13,6 +13,10 @@
   --color-surface-hi: #2d161d;
   --color-line: #40232b;
   --color-line-soft: #4a2b34;
+  /* Borders that outline a CONTROL rather than divide space. Held near 1.9:1
+     in both themes — the plain hairline drops to 1.2:1 on parchment, where an
+     outlined button all but loses its edge. */
+  --color-line-control: #5a3540; /* 1.85:1 */
   --color-section: #150709;
   --color-chip: #200e13;
 
@@ -107,6 +111,7 @@
   --color-surface-hi: #f6eedc;
   --color-line: #eadfc9;
   --color-line-soft: #f0e7d5;
+  --color-line-control: #c9ae93; /* 1.93:1 */
   --color-section: #f4ebd8;
   --color-chip: #fffdf8;
 

@@ -14,6 +14,12 @@ export function relativeTime(iso: string): string {
   return `${months} month${months === 1 ? "" : "s"} ago`;
 }
 
+/** True once a timestamp is old enough that showing it hurts more than it
+ *  helps — "Last push 3 months ago" is a signal, just not the one wanted. */
+export function isStale(iso: string, days = 30): boolean {
+  return Date.now() - new Date(iso).getTime() > days * 86_400_000;
+}
+
 /* Windows shorter than this are invisible anyway — relativeTime's smallest
    bucket above "just now" is a minute, and the one the hero usually sits in
    is hours. 15 minutes is short enough that a push made before a visit reads
